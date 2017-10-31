@@ -63,6 +63,9 @@ class Choropleth {
     this.draWTooltip();
 
     const countries = topojson.feature(this.shapeData, this.shapeData.objects[`countries`]);
+    // we should be able to change this to use the Robinson projection
+    // Mercators good for ships, and navigation, but it's Robinson is arguably
+    // more culturally senstive.
     const projection = d3.geoMercator()
       .fitSize([this.width, this.height], countries);
     const path = d3.geoPath()
